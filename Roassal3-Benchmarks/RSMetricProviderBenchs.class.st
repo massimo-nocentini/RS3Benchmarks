@@ -20,7 +20,8 @@ RSMetricProviderBenchs >> allMetricProviderClasses [
 { #category : #running }
 RSMetricProviderBenchs >> allStringSelectors [
 
-	^ { #stringDiverse. #stringRandom. #stringWithSameLetter. #stringLoremIpsum }
+	^ { #stringDiverse. #stringRandom. #stringWithSameLetter.
+	  #stringLoremIpsum. #stringLatinScript }
 ]
 
 { #category : #benchmarking }
@@ -135,6 +136,20 @@ RSMetricProviderBenchs >> stringDiverse [
 
 	^ String streamContents: [ :s | 
 		  1 to: 255 do: [ :i | s nextPut: (Character codePoint: i) ] ]
+]
+
+{ #category : #running }
+RSMetricProviderBenchs >> stringLatinScript [
+
+	| r chars |
+	chars := RSLabelTest latinScriptSpecialCharacters.
+	r := Random seed: 11.
+	^ (1 to: 255)
+		  collect: [ :_ | 
+			  | j |
+			  j := r nextInt: chars size.
+			  chars at: j ]
+		  as: String
 ]
 
 { #category : #running }
