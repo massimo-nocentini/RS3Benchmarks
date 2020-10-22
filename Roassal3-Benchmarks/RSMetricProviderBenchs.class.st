@@ -14,7 +14,12 @@ Class {
 { #category : #running }
 RSMetricProviderBenchs >> allMetricProviderClasses [
 
-	^ {RSCairoFitMetricsProvider. RSPharoMetricsProvider. RSCairoMetricsProvider. RSCairoCachedMetricsProvider}
+	^ { 
+		  RSCairoFitMetricsProvider.
+		  RSPharoMetricsProvider.
+		  RSCairoMetricsProvider.
+		  RSCairoCachedMetricsProvider.
+		  RSDocumapsMetricsProvider }
 ]
 
 { #category : #running }
@@ -37,7 +42,7 @@ RSMetricProviderBenchs >> benchLabels [
 			(RSLabel new
 				metricsProvider: metricProvider;
 				model: i;
-				fontSize: 8 + (i % 16);
+				fontSize: 12 "8 + (i % 16)"; "The following is commented in order to have better runtime"
 				text: labelString;
 				yourself) ].
 
